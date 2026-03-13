@@ -1,0 +1,727 @@
+GET https://redis.googleapis.com/v1/projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}?%24alt=json%3Benum-encoding%3Dint
+Content-Type: application/json
+User-Agent: kcc/${kccVersion} (+https://github.com/GoogleCloudPlatform/k8s-config-connector) kcc/controller-manager/${kccVersion}
+X-Goog-Request-Params: name=projects%2F${projectId}%2Flocations%2Fus-central1%2Fclusters%2Frediscluster-us-central1-a-${uniqueId}
+
+404 Not Found
+Content-Type: application/json; charset=UTF-8
+Server: ESF
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Xss-Protection: 0
+
+{
+  "error": {
+    "code": 404,
+    "message": "Resource 'projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}' was not found",
+    "status": "NOT_FOUND"
+  }
+}
+
+---
+
+POST https://redis.googleapis.com/v1/projects/${projectId}/locations/us-central1/clusters?%24alt=json%3Benum-encoding%3Dint&clusterId=rediscluster-us-central1-a-${uniqueId}
+Content-Type: application/json
+User-Agent: kcc/${kccVersion} (+https://github.com/GoogleCloudPlatform/k8s-config-connector) kcc/controller-manager/${kccVersion}
+X-Goog-Request-Params: parent=projects%2F${projectId}%2Flocations%2Fus-central1
+
+{
+  "nodeType": 1,
+  "persistenceConfig": {
+    "mode": 1
+  },
+  "replicaCount": 0,
+  "shardCount": 1,
+  "zoneDistributionConfig": {
+    "mode": 2,
+    "zone": "us-central1-a"
+  }
+}
+
+200 OK
+Content-Type: application/json; charset=UTF-8
+Server: ESF
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Xss-Protection: 0
+
+{
+  "done": false,
+  "metadata": {
+    "@type": "type.googleapis.com/google.cloud.redis.cluster.v1.OperationMetadata",
+    "apiVersion": "v1",
+    "createTime": "2024-04-01T12:34:56.123456Z",
+    "requestedCancellation": false,
+    "target": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
+    "verb": "create"
+  },
+  "name": "projects/${projectId}/locations/us-central1/operations/${operationID}"
+}
+
+---
+
+GET https://redis.googleapis.com/v1/projects/${projectId}/locations/us-central1/operations/${operationID}
+Content-Type: application/json
+User-Agent: kcc/${kccVersion} (+https://github.com/GoogleCloudPlatform/k8s-config-connector) kcc/controller-manager/${kccVersion}
+X-Goog-Request-Params: name=projects%2F${projectId}%2Flocations%2Fus-central1%2Foperations%2F${operationID}
+
+200 OK
+Content-Type: application/json; charset=UTF-8
+Server: ESF
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Xss-Protection: 0
+
+{
+  "done": true,
+  "metadata": {
+    "@type": "type.googleapis.com/google.cloud.redis.cluster.v1.OperationMetadata",
+    "apiVersion": "v1",
+    "createTime": "2024-04-01T12:34:56.123456Z",
+    "endTime": "2024-04-01T12:34:56.123456Z",
+    "requestedCancellation": false,
+    "target": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
+    "verb": "create"
+  },
+  "name": "projects/${projectId}/locations/us-central1/operations/${operationID}",
+  "response": {
+    "@type": "type.googleapis.com/google.cloud.redis.cluster.v1.Cluster",
+    "authorizationMode": "AUTH_MODE_DISABLED",
+    "automatedBackupConfig": {
+      "automatedBackupMode": "DISABLED"
+    },
+    "createTime": "2024-04-01T12:34:56.123456Z",
+    "deletionProtectionEnabled": false,
+    "effectiveMaintenanceVersion": "REDISCLUSTER_20260225_00_00",
+    "encryptionInfo": {
+      "encryptionType": "GOOGLE_DEFAULT_ENCRYPTION"
+    },
+    "name": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
+    "nodeType": "REDIS_SHARED_CORE_NANO",
+    "persistenceConfig": {
+      "mode": "DISABLED"
+    },
+    "preciseSizeGb": 1.4,
+    "pscServiceAttachments": [
+      {
+        "connectionType": "CONNECTION_TYPE_DISCOVERY",
+        "serviceAttachment": "projects/983919443561/regions/us-central1/serviceAttachments/gcp-memorystore-auto-f08d2b9c6ba5520b-psc-sa"
+      },
+      {
+        "serviceAttachment": "projects/983919443561/regions/us-central1/serviceAttachments/gcp-memorystore-auto-f08d2b9c6ba5520b-psc-sa-2"
+      }
+    ],
+    "replicaCount": 0,
+    "satisfiesPzi": true,
+    "serverCaMode": "SERVER_CA_MODE_UNSPECIFIED",
+    "shardCount": 1,
+    "sizeGb": 2,
+    "state": "ACTIVE",
+    "transitEncryptionMode": "TRANSIT_ENCRYPTION_MODE_DISABLED",
+    "uid": "111111111111111111111",
+    "zoneDistributionConfig": {
+      "mode": "SINGLE_ZONE",
+      "zone": "us-central1-a"
+    }
+  }
+}
+
+---
+
+GET https://redis.googleapis.com/v1/projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}?%24alt=json%3Benum-encoding%3Dint
+Content-Type: application/json
+User-Agent: kcc/${kccVersion} (+https://github.com/GoogleCloudPlatform/k8s-config-connector) kcc/controller-manager/${kccVersion}
+X-Goog-Request-Params: name=projects%2F${projectId}%2Flocations%2Fus-central1%2Fclusters%2Frediscluster-us-central1-b-${uniqueId}
+
+404 Not Found
+Content-Type: application/json; charset=UTF-8
+Server: ESF
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Xss-Protection: 0
+
+{
+  "error": {
+    "code": 404,
+    "message": "Resource 'projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}' was not found",
+    "status": "NOT_FOUND"
+  }
+}
+
+---
+
+POST https://redis.googleapis.com/v1/projects/${projectId}/locations/us-central1/clusters?%24alt=json%3Benum-encoding%3Dint&clusterId=rediscluster-us-central1-b-${uniqueId}
+Content-Type: application/json
+User-Agent: kcc/${kccVersion} (+https://github.com/GoogleCloudPlatform/k8s-config-connector) kcc/controller-manager/${kccVersion}
+X-Goog-Request-Params: parent=projects%2F${projectId}%2Flocations%2Fus-central1
+
+{
+  "crossClusterReplicationConfig": {
+    "clusterRole": 3,
+    "primaryCluster": {
+      "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}"
+    }
+  },
+  "nodeType": 1,
+  "persistenceConfig": {
+    "mode": 1
+  },
+  "replicaCount": 0,
+  "shardCount": 1,
+  "zoneDistributionConfig": {
+    "mode": 2,
+    "zone": "us-central1-b"
+  }
+}
+
+200 OK
+Content-Type: application/json; charset=UTF-8
+Server: ESF
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Xss-Protection: 0
+
+{
+  "done": false,
+  "metadata": {
+    "@type": "type.googleapis.com/google.cloud.redis.cluster.v1.OperationMetadata",
+    "apiVersion": "v1",
+    "createTime": "2024-04-01T12:34:56.123456Z",
+    "requestedCancellation": false,
+    "target": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
+    "verb": "create"
+  },
+  "name": "projects/${projectId}/locations/us-central1/operations/${operationID}"
+}
+
+---
+
+GET https://redis.googleapis.com/v1/projects/${projectId}/locations/us-central1/operations/${operationID}
+Content-Type: application/json
+User-Agent: kcc/${kccVersion} (+https://github.com/GoogleCloudPlatform/k8s-config-connector) kcc/controller-manager/${kccVersion}
+X-Goog-Request-Params: name=projects%2F${projectId}%2Flocations%2Fus-central1%2Foperations%2F${operationID}
+
+200 OK
+Content-Type: application/json; charset=UTF-8
+Server: ESF
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Xss-Protection: 0
+
+{
+  "done": true,
+  "metadata": {
+    "@type": "type.googleapis.com/google.cloud.redis.cluster.v1.OperationMetadata",
+    "apiVersion": "v1",
+    "createTime": "2024-04-01T12:34:56.123456Z",
+    "endTime": "2024-04-01T12:34:56.123456Z",
+    "requestedCancellation": false,
+    "target": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
+    "verb": "create"
+  },
+  "name": "projects/${projectId}/locations/us-central1/operations/${operationID}",
+  "response": {
+    "@type": "type.googleapis.com/google.cloud.redis.cluster.v1.Cluster",
+    "authorizationMode": "AUTH_MODE_DISABLED",
+    "automatedBackupConfig": {
+      "automatedBackupMode": "DISABLED"
+    },
+    "createTime": "2024-04-01T12:34:56.123456Z",
+    "crossClusterReplicationConfig": {
+      "clusterRole": "SECONDARY",
+      "membership": {
+        "primaryCluster": {
+          "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
+          "uid": "9ee99fdd-f231-42c8-84ae-4542c5a51db2"
+        },
+        "secondaryClusters": [
+          {
+            "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
+            "uid": "995736d6-1807-488b-a49d-75183095fb0c"
+          }
+        ]
+      },
+      "primaryCluster": {
+        "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
+        "uid": "9ee99fdd-f231-42c8-84ae-4542c5a51db2"
+      },
+      "updateTime": "2026-03-13T22:34:23.060812571Z"
+    },
+    "deletionProtectionEnabled": false,
+    "effectiveMaintenanceVersion": "REDISCLUSTER_20260225_00_00",
+    "encryptionInfo": {
+      "encryptionType": "GOOGLE_DEFAULT_ENCRYPTION"
+    },
+    "name": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
+    "nodeType": "REDIS_SHARED_CORE_NANO",
+    "persistenceConfig": {
+      "mode": "DISABLED"
+    },
+    "preciseSizeGb": 1.4,
+    "pscServiceAttachments": [
+      {
+        "connectionType": "CONNECTION_TYPE_DISCOVERY",
+        "serviceAttachment": "projects/1025880878716/regions/us-central1/serviceAttachments/gcp-memorystore-auto-h200c6a62a7b547d-psc-sa"
+      },
+      {
+        "serviceAttachment": "projects/1025880878716/regions/us-central1/serviceAttachments/gcp-memorystore-auto-h200c6a62a7b547d-psc-sa-2"
+      }
+    ],
+    "replicaCount": 0,
+    "satisfiesPzi": false,
+    "serverCaMode": "SERVER_CA_MODE_UNSPECIFIED",
+    "shardCount": 1,
+    "sizeGb": 2,
+    "state": "ACTIVE",
+    "transitEncryptionMode": "TRANSIT_ENCRYPTION_MODE_DISABLED",
+    "uid": "111111111111111111111",
+    "zoneDistributionConfig": {
+      "mode": "SINGLE_ZONE",
+      "zone": "us-central1-b"
+    }
+  }
+}
+
+---
+
+GET https://redis.googleapis.com/v1/projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}?%24alt=json%3Benum-encoding%3Dint
+Content-Type: application/json
+User-Agent: kcc/${kccVersion} (+https://github.com/GoogleCloudPlatform/k8s-config-connector) kcc/controller-manager/${kccVersion}
+X-Goog-Request-Params: name=projects%2F${projectId}%2Flocations%2Fus-central1%2Fclusters%2Frediscluster-us-central1-b-${uniqueId}
+
+200 OK
+Content-Type: application/json; charset=UTF-8
+Server: ESF
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Xss-Protection: 0
+
+{
+  "authorizationMode": 2,
+  "automatedBackupConfig": {
+    "automatedBackupMode": 1
+  },
+  "createTime": "2024-04-01T12:34:56.123456Z",
+  "crossClusterReplicationConfig": {
+    "clusterRole": 3,
+    "membership": {
+      "primaryCluster": {
+        "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
+        "uid": "9ee99fdd-f231-42c8-84ae-4542c5a51db2"
+      },
+      "secondaryClusters": [
+        {
+          "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
+          "uid": "995736d6-1807-488b-a49d-75183095fb0c"
+        }
+      ]
+    },
+    "primaryCluster": {
+      "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
+      "uid": "9ee99fdd-f231-42c8-84ae-4542c5a51db2"
+    },
+    "updateTime": "2026-03-13T22:34:23.060812571Z"
+  },
+  "deletionProtectionEnabled": false,
+  "effectiveMaintenanceVersion": "REDISCLUSTER_20260225_00_00",
+  "encryptionInfo": {
+    "encryptionType": 1
+  },
+  "name": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
+  "nodeType": 1,
+  "persistenceConfig": {
+    "mode": 1
+  },
+  "preciseSizeGb": 1.4,
+  "pscServiceAttachments": [
+    {
+      "connectionType": 1,
+      "serviceAttachment": "projects/1025880878716/regions/us-central1/serviceAttachments/gcp-memorystore-auto-h200c6a62a7b547d-psc-sa"
+    },
+    {
+      "serviceAttachment": "projects/1025880878716/regions/us-central1/serviceAttachments/gcp-memorystore-auto-h200c6a62a7b547d-psc-sa-2"
+    }
+  ],
+  "replicaCount": 0,
+  "satisfiesPzi": false,
+  "serverCaMode": 0,
+  "shardCount": 1,
+  "sizeGb": 2,
+  "state": 2,
+  "transitEncryptionMode": 1,
+  "uid": "111111111111111111111",
+  "zoneDistributionConfig": {
+    "mode": 2,
+    "zone": "us-central1-b"
+  }
+}
+
+---
+
+PATCH https://redis.googleapis.com/v1/projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}?%24alt=json%3Benum-encoding%3Dint&updateMask=crossClusterReplicationConfig
+Content-Type: application/json
+User-Agent: kcc/${kccVersion} (+https://github.com/GoogleCloudPlatform/k8s-config-connector) kcc/controller-manager/${kccVersion}
+X-Goog-Request-Params: cluster.name=projects%2F${projectId}%2Flocations%2Fus-central1%2Fclusters%2Frediscluster-us-central1-b-${uniqueId}
+
+{
+  "crossClusterReplicationConfig": {
+    "clusterRole": 2,
+    "primaryCluster": {},
+    "secondaryClusters": [
+      {
+        "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}"
+      }
+    ]
+  },
+  "name": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
+  "nodeType": 1,
+  "persistenceConfig": {
+    "mode": 1
+  },
+  "replicaCount": 0,
+  "shardCount": 1,
+  "zoneDistributionConfig": {
+    "mode": 2,
+    "zone": "us-central1-b"
+  }
+}
+
+200 OK
+Content-Type: application/json; charset=UTF-8
+Server: ESF
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Xss-Protection: 0
+
+{
+  "done": false,
+  "metadata": {
+    "@type": "type.googleapis.com/google.cloud.redis.cluster.v1.OperationMetadata",
+    "apiVersion": "v1",
+    "createTime": "2024-04-01T12:34:56.123456Z",
+    "requestedCancellation": false,
+    "target": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
+    "verb": "update"
+  },
+  "name": "projects/${projectId}/locations/us-central1/operations/${operationID}"
+}
+
+---
+
+GET https://redis.googleapis.com/v1/projects/${projectId}/locations/us-central1/operations/${operationID}
+Content-Type: application/json
+User-Agent: kcc/${kccVersion} (+https://github.com/GoogleCloudPlatform/k8s-config-connector) kcc/controller-manager/${kccVersion}
+X-Goog-Request-Params: name=projects%2F${projectId}%2Flocations%2Fus-central1%2Foperations%2F${operationID}
+
+200 OK
+Content-Type: application/json; charset=UTF-8
+Server: ESF
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Xss-Protection: 0
+
+{
+  "done": true,
+  "metadata": {
+    "@type": "type.googleapis.com/google.cloud.redis.cluster.v1.OperationMetadata",
+    "apiVersion": "v1",
+    "createTime": "2024-04-01T12:34:56.123456Z",
+    "endTime": "2024-04-01T12:34:56.123456Z",
+    "requestedCancellation": false,
+    "target": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
+    "verb": "update"
+  },
+  "name": "projects/${projectId}/locations/us-central1/operations/${operationID}",
+  "response": {
+    "@type": "type.googleapis.com/google.cloud.redis.cluster.v1.Cluster",
+    "authorizationMode": "AUTH_MODE_DISABLED",
+    "automatedBackupConfig": {
+      "automatedBackupMode": "DISABLED"
+    },
+    "createTime": "2024-04-01T12:34:56.123456Z",
+    "crossClusterReplicationConfig": {
+      "clusterRole": "PRIMARY",
+      "membership": {
+        "primaryCluster": {
+          "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
+          "uid": "995736d6-1807-488b-a49d-75183095fb0c"
+        },
+        "secondaryClusters": [
+          {
+            "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
+            "uid": "9ee99fdd-f231-42c8-84ae-4542c5a51db2"
+          }
+        ]
+      },
+      "secondaryClusters": [
+        {
+          "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
+          "uid": "9ee99fdd-f231-42c8-84ae-4542c5a51db2"
+        }
+      ],
+      "updateTime": "2026-03-13T22:44:38.034520671Z"
+    },
+    "deletionProtectionEnabled": false,
+    "effectiveMaintenanceVersion": "REDISCLUSTER_20260225_00_00",
+    "encryptionInfo": {
+      "encryptionType": "GOOGLE_DEFAULT_ENCRYPTION"
+    },
+    "name": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
+    "nodeType": "REDIS_SHARED_CORE_NANO",
+    "persistenceConfig": {
+      "mode": "DISABLED"
+    },
+    "preciseSizeGb": 1.4,
+    "pscServiceAttachments": [
+      {
+        "connectionType": "CONNECTION_TYPE_DISCOVERY",
+        "serviceAttachment": "projects/1025880878716/regions/us-central1/serviceAttachments/gcp-memorystore-auto-h200c6a62a7b547d-psc-sa"
+      },
+      {
+        "serviceAttachment": "projects/1025880878716/regions/us-central1/serviceAttachments/gcp-memorystore-auto-h200c6a62a7b547d-psc-sa-2"
+      }
+    ],
+    "replicaCount": 0,
+    "satisfiesPzi": false,
+    "serverCaMode": "SERVER_CA_MODE_UNSPECIFIED",
+    "shardCount": 1,
+    "sizeGb": 2,
+    "state": "ACTIVE",
+    "transitEncryptionMode": "TRANSIT_ENCRYPTION_MODE_DISABLED",
+    "uid": "111111111111111111111",
+    "zoneDistributionConfig": {
+      "mode": "SINGLE_ZONE",
+      "zone": "us-central1-b"
+    }
+  }
+}
+
+---
+
+GET https://redis.googleapis.com/v1/projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}?%24alt=json%3Benum-encoding%3Dint
+Content-Type: application/json
+User-Agent: kcc/${kccVersion} (+https://github.com/GoogleCloudPlatform/k8s-config-connector) kcc/controller-manager/${kccVersion}
+X-Goog-Request-Params: name=projects%2F${projectId}%2Flocations%2Fus-central1%2Fclusters%2Frediscluster-us-central1-b-${uniqueId}
+
+200 OK
+Content-Type: application/json; charset=UTF-8
+Server: ESF
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Xss-Protection: 0
+
+{
+  "authorizationMode": 2,
+  "automatedBackupConfig": {
+    "automatedBackupMode": 1
+  },
+  "createTime": "2024-04-01T12:34:56.123456Z",
+  "crossClusterReplicationConfig": {
+    "clusterRole": 2,
+    "membership": {
+      "primaryCluster": {
+        "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
+        "uid": "995736d6-1807-488b-a49d-75183095fb0c"
+      },
+      "secondaryClusters": [
+        {
+          "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
+          "uid": "9ee99fdd-f231-42c8-84ae-4542c5a51db2"
+        }
+      ]
+    },
+    "secondaryClusters": [
+      {
+        "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
+        "uid": "9ee99fdd-f231-42c8-84ae-4542c5a51db2"
+      }
+    ],
+    "updateTime": "2026-03-13T22:44:38.034520671Z"
+  },
+  "deletionProtectionEnabled": false,
+  "effectiveMaintenanceVersion": "REDISCLUSTER_20260225_00_00",
+  "encryptionInfo": {
+    "encryptionType": 1
+  },
+  "name": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
+  "nodeType": 1,
+  "persistenceConfig": {
+    "mode": 1
+  },
+  "preciseSizeGb": 1.4,
+  "pscServiceAttachments": [
+    {
+      "connectionType": 1,
+      "serviceAttachment": "projects/1025880878716/regions/us-central1/serviceAttachments/gcp-memorystore-auto-h200c6a62a7b547d-psc-sa"
+    },
+    {
+      "serviceAttachment": "projects/1025880878716/regions/us-central1/serviceAttachments/gcp-memorystore-auto-h200c6a62a7b547d-psc-sa-2"
+    }
+  ],
+  "replicaCount": 0,
+  "satisfiesPzi": false,
+  "serverCaMode": 0,
+  "shardCount": 1,
+  "sizeGb": 2,
+  "state": 2,
+  "transitEncryptionMode": 1,
+  "uid": "111111111111111111111",
+  "zoneDistributionConfig": {
+    "mode": 2,
+    "zone": "us-central1-b"
+  }
+}
+
+---
+
+GET https://redis.googleapis.com/v1/projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}?%24alt=json%3Benum-encoding%3Dint
+Content-Type: application/json
+User-Agent: kcc/${kccVersion} (+https://github.com/GoogleCloudPlatform/k8s-config-connector) kcc/controller-manager/${kccVersion}
+X-Goog-Request-Params: name=projects%2F${projectId}%2Flocations%2Fus-central1%2Fclusters%2Frediscluster-us-central1-a-${uniqueId}
+
+200 OK
+Content-Type: application/json; charset=UTF-8
+Server: ESF
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Xss-Protection: 0
+
+{
+  "authorizationMode": 2,
+  "automatedBackupConfig": {
+    "automatedBackupMode": 1
+  },
+  "createTime": "2024-04-01T12:34:56.123456Z",
+  "deletionProtectionEnabled": false,
+  "effectiveMaintenanceVersion": "REDISCLUSTER_20260225_00_00",
+  "encryptionInfo": {
+    "encryptionType": 1
+  },
+  "name": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
+  "nodeType": 1,
+  "persistenceConfig": {
+    "mode": 1
+  },
+  "preciseSizeGb": 1.4,
+  "pscServiceAttachments": [
+    {
+      "connectionType": 1,
+      "serviceAttachment": "projects/983919443561/regions/us-central1/serviceAttachments/gcp-memorystore-auto-f08d2b9c6ba5520b-psc-sa"
+    },
+    {
+      "serviceAttachment": "projects/983919443561/regions/us-central1/serviceAttachments/gcp-memorystore-auto-f08d2b9c6ba5520b-psc-sa-2"
+    }
+  ],
+  "replicaCount": 0,
+  "satisfiesPzi": true,
+  "serverCaMode": 0,
+  "shardCount": 1,
+  "sizeGb": 2,
+  "state": 3,
+  "stateInfo": {
+    "updateInfo": {}
+  },
+  "transitEncryptionMode": 1,
+  "uid": "111111111111111111111",
+  "zoneDistributionConfig": {
+    "mode": 2,
+    "zone": "us-central1-a"
+  }
+}
+
+---
+
+DELETE https://redis.googleapis.com/v1/projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}?%24alt=json%3Benum-encoding%3Dint
+Content-Type: application/json
+User-Agent: kcc/${kccVersion} (+https://github.com/GoogleCloudPlatform/k8s-config-connector) kcc/controller-manager/${kccVersion}
+X-Goog-Request-Params: name=projects%2F${projectId}%2Flocations%2Fus-central1%2Fclusters%2Frediscluster-us-central1-a-${uniqueId}
+
+200 OK
+Content-Type: application/json; charset=UTF-8
+Server: ESF
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Xss-Protection: 0
+
+{
+  "done": false,
+  "metadata": {
+    "@type": "type.googleapis.com/google.cloud.redis.cluster.v1.OperationMetadata",
+    "apiVersion": "v1",
+    "createTime": "2024-04-01T12:34:56.123456Z",
+    "requestedCancellation": false,
+    "target": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
+    "verb": "delete"
+  },
+  "name": "projects/${projectId}/locations/us-central1/operations/${operationID}"
+}
+
+---
+
+GET https://redis.googleapis.com/v1/projects/${projectId}/locations/us-central1/operations/${operationID}
+Content-Type: application/json
+User-Agent: kcc/${kccVersion} (+https://github.com/GoogleCloudPlatform/k8s-config-connector) kcc/controller-manager/${kccVersion}
+X-Goog-Request-Params: name=projects%2F${projectId}%2Flocations%2Fus-central1%2Foperations%2F${operationID}
+
+200 OK
+Content-Type: application/json; charset=UTF-8
+Server: ESF
+Vary: Origin
+Vary: X-Origin
+Vary: Referer
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+X-Xss-Protection: 0
+
+{
+  "done": true,
+  "metadata": {
+    "@type": "type.googleapis.com/google.cloud.redis.cluster.v1.OperationMetadata",
+    "apiVersion": "v1",
+    "createTime": "2024-04-01T12:34:56.123456Z",
+    "endTime": "2024-04-01T12:34:56.123456Z",
+    "requestedCancellation": false,
+    "target": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
+    "verb": "delete"
+  },
+  "name": "projects/${projectId}/locations/us-central1/operations/${operationID}",
+  "response": {
+    "@type": "type.googleapis.com/google.protobuf.Empty"
+  }
+}
