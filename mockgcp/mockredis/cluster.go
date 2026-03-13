@@ -190,7 +190,7 @@ func (s *clusterServer) populateDefaultsForCluster(name *clusterName, obj *pb.Cl
 		obj.TransitEncryptionMode = pb.TransitEncryptionMode_TRANSIT_ENCRYPTION_MODE_DISABLED
 	}
 	if obj.Uid == "" {
-		obj.Uid = fmt.Sprintf("%x", time.Now().UnixNano())
+		obj.Uid = fmt.Sprintf("cluster-%s", name.Name)
 	}
 	if obj.ZoneDistributionConfig == nil {
 		obj.ZoneDistributionConfig = &pb.ZoneDistributionConfig{}
@@ -198,6 +198,54 @@ func (s *clusterServer) populateDefaultsForCluster(name *clusterName, obj *pb.Cl
 	if obj.ZoneDistributionConfig.Mode == pb.ZoneDistributionConfig_ZONE_DISTRIBUTION_MODE_UNSPECIFIED {
 		obj.ZoneDistributionConfig.Mode = pb.ZoneDistributionConfig_MULTI_ZONE
 	}
+	if crr := obj.CrossClusterReplicationConfig; crr != nil {
+		crr.UpdateTime = timestamppb.New(time.Now())
+		switch crr.ClusterRole {
+		case pb.CrossClusterReplicationConfig_PRIMARY:
+			crr.PrimaryCluster = nil
+			crr.Membership = &pb.CrossClusterReplicationConfig_Membership{
+				PrimaryCluster: &pb.CrossClusterReplicationConfig_RemoteCluster{
+					Cluster: name.String(),
+					Uid:     obj.Uid,
+				},
+				SecondaryClusters: []*pb.CrossClusterReplicationConfig_RemoteCluster{},
+			}
+			for _, secondaryCluster := range crr.SecondaryClusters {
+				secondaryName, err := s.parseClusterName(secondaryCluster.Cluster)
+				if err != nil {
+					return err
+				}
+				secondaryCluster.Uid = fmt.Sprintf("cluster-%s", secondaryName.Name)
+				crr.Membership.SecondaryClusters = append(crr.Membership.SecondaryClusters, &pb.CrossClusterReplicationConfig_RemoteCluster{
+					Cluster: secondaryCluster.Cluster,
+					Uid:     secondaryCluster.Uid,
+				})
+			}
+		case pb.CrossClusterReplicationConfig_SECONDARY:
+			primaryName, err := s.parseClusterName(crr.PrimaryCluster.Cluster)
+			if err != nil {
+				return err
+			}
+			crr.PrimaryCluster.Uid = fmt.Sprintf("cluster-%s", primaryName.Name)
+			crr.Membership = &pb.CrossClusterReplicationConfig_Membership{
+				PrimaryCluster: &pb.CrossClusterReplicationConfig_RemoteCluster{
+					Cluster: crr.PrimaryCluster.Cluster,
+					Uid:     crr.PrimaryCluster.Uid,
+				},
+				SecondaryClusters: []*pb.CrossClusterReplicationConfig_RemoteCluster{
+					&pb.CrossClusterReplicationConfig_RemoteCluster{
+						Cluster: name.String(),
+						Uid:     obj.Uid,
+					},
+				},
+			}
+		case pb.CrossClusterReplicationConfig_NONE, pb.CrossClusterReplicationConfig_CLUSTER_ROLE_UNSPECIFIED:
+			obj.CrossClusterReplicationConfig = nil
+		default:
+			return fmt.Errorf("unknown cluster role %v", crr.ClusterRole)
+		}
+	}
+
 	return nil
 }
 
@@ -251,6 +299,8 @@ func (r *clusterServer) UpdateCluster(ctx context.Context, req *pb.UpdateCluster
 			obj.PersistenceConfig = req.Cluster.PersistenceConfig
 		case "redisConfigs":
 			obj.RedisConfigs = req.Cluster.RedisConfigs
+		case "crossClusterReplicationConfig":
+			obj.CrossClusterReplicationConfig = req.Cluster.CrossClusterReplicationConfig
 
 		default:
 			return nil, status.Errorf(codes.InvalidArgument, "update_mask path %q not supported by mockgcp", path)
