@@ -108,7 +108,16 @@ func (m *redisClusterModel) AdapterForObject(ctx context.Context, op *directbase
 		return nil, fmt.Errorf("cannot resolve project")
 	}
 
-	if err := common.VisitFields(obj, &refNormalizer{ctx: ctx, src: obj, project: *projectRef, kube: kube}); err != nil {
+	normalizer := &refNormalizer{
+		ctx:       ctx,
+		src:       obj,
+		project:   *projectRef,
+		kube:      kube,
+		name:      resourceID,
+		namespace: obj.GetNamespace(),
+		external:  fmt.Sprintf("projects/%s/locations/%s/clusters/%s", projectID, location, resourceID),
+	}
+	if err := common.VisitFields(obj, normalizer); err != nil {
 		return nil, err
 	}
 
@@ -135,6 +144,21 @@ func (m *redisClusterModel) AdapterForObject(ctx context.Context, op *directbase
 		desired.PersistenceConfig.AofConfig = nil
 	case pb.ClusterPersistenceConfig_AOF:
 		desired.PersistenceConfig.RdbConfig = nil
+	}
+
+	// Need to unset the fields to allow for switchover in cross region replication.
+	if desired.CrossClusterReplicationConfig != nil {
+		switch desired.GetCrossClusterReplicationConfig().GetClusterRole() {
+		case pb.CrossClusterReplicationConfig_PRIMARY:
+			desired.CrossClusterReplicationConfig.PrimaryCluster =
+				&pb.CrossClusterReplicationConfig_RemoteCluster{Cluster: ""}
+		case pb.CrossClusterReplicationConfig_SECONDARY:
+			desired.CrossClusterReplicationConfig.SecondaryClusters = nil
+		default:
+			desired.CrossClusterReplicationConfig.PrimaryCluster =
+				&pb.CrossClusterReplicationConfig_RemoteCluster{Cluster: ""}
+			desired.CrossClusterReplicationConfig.SecondaryClusters = nil
+		}
 	}
 
 	return &redisClusterAdapter{
@@ -247,7 +271,7 @@ func (a *redisClusterAdapter) Create(ctx context.Context, createOp *directbase.C
 	if mapCtx.Err() != nil {
 		return mapCtx.Err()
 	}
-	return setObservedState(u, observedState)
+	return setObservedState(u, observedState, a.fullyQualifiedName())
 }
 
 // Update implements the Adapter interface.
@@ -285,6 +309,11 @@ func (a *redisClusterAdapter) Update(ctx context.Context, updateOp *directbase.U
 	if !reflect.DeepEqual(a.desired.GetRedisConfigs(), a.actual.GetRedisConfigs()) {
 		report.AddField("redis_configs", a.actual.GetRedisConfigs(), a.desired.GetRedisConfigs())
 		updateMask.Paths = append(updateMask.Paths, "redis_configs")
+	}
+
+	if !proto.Equal(a.desired.CrossClusterReplicationConfig, a.actual.CrossClusterReplicationConfig) {
+		report.AddField("cross_cluster_replication_config", a.actual.CrossClusterReplicationConfig, a.desired.CrossClusterReplicationConfig)
+		updateMask.Paths = append(updateMask.Paths, "cross_cluster_replication_config")
 	}
 
 	var latest *pb.Cluster
@@ -326,7 +355,7 @@ func (a *redisClusterAdapter) Update(ctx context.Context, updateOp *directbase.U
 	if mapCtx.Err() != nil {
 		return mapCtx.Err()
 	}
-	return setObservedState(u, observedState)
+	return setObservedState(u, observedState, a.fullyQualifiedName())
 }
 
 func (a *redisClusterAdapter) fullyQualifiedName() string {

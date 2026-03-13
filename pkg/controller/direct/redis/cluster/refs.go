@@ -39,10 +39,13 @@ func normalizeProjectRef(ctx context.Context, reader client.Reader, src client.O
 }
 
 type refNormalizer struct {
-	ctx     context.Context
-	kube    client.Reader
-	src     client.Object
-	project refs.ProjectIdentity
+	ctx       context.Context
+	kube      client.Reader
+	src       client.Object
+	project   refs.ProjectIdentity
+	name      string
+	namespace string
+	external  string
 }
 
 func (r *refNormalizer) VisitField(path string, v any) error {
@@ -56,6 +59,15 @@ func (r *refNormalizer) VisitField(path string, v any) error {
 
 	if networkRef, ok := v.(*computev1beta1.ComputeNetworkRef); ok {
 		if err := networkRef.Normalize(r.ctx, r.kube, r.src.GetNamespace()); err != nil {
+			return err
+		}
+	}
+
+	if redisClusterRef, ok := v.(*refs.RedisClusterRef); ok {
+		if redisClusterRef.Name == r.name && redisClusterRef.Namespace == r.namespace {
+			redisClusterRef.External = r.external
+		}
+		if err := redisClusterRef.Normalize(r.ctx, r.kube, r.src.GetNamespace()); err != nil {
 			return err
 		}
 	}

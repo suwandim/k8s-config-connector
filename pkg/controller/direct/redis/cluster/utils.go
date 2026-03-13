@@ -22,7 +22,7 @@ import (
 	"k8s.io/apimachinery/pkg/runtime"
 )
 
-func setObservedState(u *unstructured.Unstructured, observedState any) error {
+func setObservedState(u *unstructured.Unstructured, observedState any, fullyQualifiedName string) error {
 	unstructuredObservedState, err := runtime.DefaultUnstructuredConverter.ToUnstructured(observedState)
 	if err != nil {
 		return fmt.Errorf("error converting observedState to unstructured: %w", err)
@@ -36,6 +36,7 @@ func setObservedState(u *unstructured.Unstructured, observedState any) error {
 		u.Object["status"] = status
 	}
 	status["observedState"] = unstructuredObservedState
+	status["externalRef"] = fullyQualifiedName
 
 	return nil
 }
