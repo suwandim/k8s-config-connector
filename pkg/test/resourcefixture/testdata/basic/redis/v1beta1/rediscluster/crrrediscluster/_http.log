@@ -52,12 +52,10 @@ X-Frame-Options: SAMEORIGIN
 X-Xss-Protection: 0
 
 {
-  "done": false,
   "metadata": {
     "@type": "type.googleapis.com/google.cloud.redis.cluster.v1.OperationMetadata",
     "apiVersion": "v1",
     "createTime": "2024-04-01T12:34:56.123456Z",
-    "requestedCancellation": false,
     "target": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
     "verb": "create"
   },
@@ -88,7 +86,6 @@ X-Xss-Protection: 0
     "apiVersion": "v1",
     "createTime": "2024-04-01T12:34:56.123456Z",
     "endTime": "2024-04-01T12:34:56.123456Z",
-    "requestedCancellation": false,
     "target": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
     "verb": "create"
   },
@@ -96,35 +93,17 @@ X-Xss-Protection: 0
   "response": {
     "@type": "type.googleapis.com/google.cloud.redis.cluster.v1.Cluster",
     "authorizationMode": "AUTH_MODE_DISABLED",
-    "automatedBackupConfig": {
-      "automatedBackupMode": "DISABLED"
-    },
     "createTime": "2024-04-01T12:34:56.123456Z",
     "deletionProtectionEnabled": false,
-    "effectiveMaintenanceVersion": "REDISCLUSTER_20260225_00_00",
-    "encryptionInfo": {
-      "encryptionType": "GOOGLE_DEFAULT_ENCRYPTION"
-    },
     "name": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
     "nodeType": "REDIS_SHARED_CORE_NANO",
     "persistenceConfig": {
       "mode": "DISABLED"
     },
     "preciseSizeGb": 1.4,
-    "pscServiceAttachments": [
-      {
-        "connectionType": "CONNECTION_TYPE_DISCOVERY",
-        "serviceAttachment": "projects/983919443561/regions/us-central1/serviceAttachments/gcp-memorystore-auto-f08d2b9c6ba5520b-psc-sa"
-      },
-      {
-        "serviceAttachment": "projects/983919443561/regions/us-central1/serviceAttachments/gcp-memorystore-auto-f08d2b9c6ba5520b-psc-sa-2"
-      }
-    ],
     "replicaCount": 0,
-    "satisfiesPzi": true,
-    "serverCaMode": "SERVER_CA_MODE_UNSPECIFIED",
     "shardCount": 1,
-    "sizeGb": 2,
+    "sizeGb": 1,
     "state": "ACTIVE",
     "transitEncryptionMode": "TRANSIT_ENCRYPTION_MODE_DISABLED",
     "uid": "111111111111111111111",
@@ -197,12 +176,10 @@ X-Frame-Options: SAMEORIGIN
 X-Xss-Protection: 0
 
 {
-  "done": false,
   "metadata": {
     "@type": "type.googleapis.com/google.cloud.redis.cluster.v1.OperationMetadata",
     "apiVersion": "v1",
     "createTime": "2024-04-01T12:34:56.123456Z",
-    "requestedCancellation": false,
     "target": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
     "verb": "create"
   },
@@ -233,7 +210,6 @@ X-Xss-Protection: 0
     "apiVersion": "v1",
     "createTime": "2024-04-01T12:34:56.123456Z",
     "endTime": "2024-04-01T12:34:56.123456Z",
-    "requestedCancellation": false,
     "target": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
     "verb": "create"
   },
@@ -241,55 +217,37 @@ X-Xss-Protection: 0
   "response": {
     "@type": "type.googleapis.com/google.cloud.redis.cluster.v1.Cluster",
     "authorizationMode": "AUTH_MODE_DISABLED",
-    "automatedBackupConfig": {
-      "automatedBackupMode": "DISABLED"
-    },
     "createTime": "2024-04-01T12:34:56.123456Z",
     "crossClusterReplicationConfig": {
       "clusterRole": "SECONDARY",
       "membership": {
         "primaryCluster": {
           "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
-          "uid": "9ee99fdd-f231-42c8-84ae-4542c5a51db2"
+          "uid": "cluster-rediscluster-us-central1-a-${uniqueId}"
         },
         "secondaryClusters": [
           {
             "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
-            "uid": "995736d6-1807-488b-a49d-75183095fb0c"
+            "uid": "cluster-rediscluster-us-central1-b-${uniqueId}"
           }
         ]
       },
       "primaryCluster": {
         "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
-        "uid": "9ee99fdd-f231-42c8-84ae-4542c5a51db2"
+        "uid": "cluster-rediscluster-us-central1-a-${uniqueId}"
       },
-      "updateTime": "2026-03-13T22:34:23.060812571Z"
+      "updateTime": "2026-03-13T23:48:04.562474891Z"
     },
     "deletionProtectionEnabled": false,
-    "effectiveMaintenanceVersion": "REDISCLUSTER_20260225_00_00",
-    "encryptionInfo": {
-      "encryptionType": "GOOGLE_DEFAULT_ENCRYPTION"
-    },
     "name": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
     "nodeType": "REDIS_SHARED_CORE_NANO",
     "persistenceConfig": {
       "mode": "DISABLED"
     },
     "preciseSizeGb": 1.4,
-    "pscServiceAttachments": [
-      {
-        "connectionType": "CONNECTION_TYPE_DISCOVERY",
-        "serviceAttachment": "projects/1025880878716/regions/us-central1/serviceAttachments/gcp-memorystore-auto-h200c6a62a7b547d-psc-sa"
-      },
-      {
-        "serviceAttachment": "projects/1025880878716/regions/us-central1/serviceAttachments/gcp-memorystore-auto-h200c6a62a7b547d-psc-sa-2"
-      }
-    ],
     "replicaCount": 0,
-    "satisfiesPzi": false,
-    "serverCaMode": "SERVER_CA_MODE_UNSPECIFIED",
     "shardCount": 1,
-    "sizeGb": 2,
+    "sizeGb": 1,
     "state": "ACTIVE",
     "transitEncryptionMode": "TRANSIT_ENCRYPTION_MODE_DISABLED",
     "uid": "111111111111111111111",
@@ -319,55 +277,37 @@ X-Xss-Protection: 0
 
 {
   "authorizationMode": 2,
-  "automatedBackupConfig": {
-    "automatedBackupMode": 1
-  },
   "createTime": "2024-04-01T12:34:56.123456Z",
   "crossClusterReplicationConfig": {
     "clusterRole": 3,
     "membership": {
       "primaryCluster": {
         "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
-        "uid": "9ee99fdd-f231-42c8-84ae-4542c5a51db2"
+        "uid": "cluster-rediscluster-us-central1-a-${uniqueId}"
       },
       "secondaryClusters": [
         {
           "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
-          "uid": "995736d6-1807-488b-a49d-75183095fb0c"
+          "uid": "cluster-rediscluster-us-central1-b-${uniqueId}"
         }
       ]
     },
     "primaryCluster": {
       "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
-      "uid": "9ee99fdd-f231-42c8-84ae-4542c5a51db2"
+      "uid": "cluster-rediscluster-us-central1-a-${uniqueId}"
     },
-    "updateTime": "2026-03-13T22:34:23.060812571Z"
+    "updateTime": "2026-03-13T23:48:04.562474891Z"
   },
   "deletionProtectionEnabled": false,
-  "effectiveMaintenanceVersion": "REDISCLUSTER_20260225_00_00",
-  "encryptionInfo": {
-    "encryptionType": 1
-  },
   "name": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
   "nodeType": 1,
   "persistenceConfig": {
     "mode": 1
   },
   "preciseSizeGb": 1.4,
-  "pscServiceAttachments": [
-    {
-      "connectionType": 1,
-      "serviceAttachment": "projects/1025880878716/regions/us-central1/serviceAttachments/gcp-memorystore-auto-h200c6a62a7b547d-psc-sa"
-    },
-    {
-      "serviceAttachment": "projects/1025880878716/regions/us-central1/serviceAttachments/gcp-memorystore-auto-h200c6a62a7b547d-psc-sa-2"
-    }
-  ],
   "replicaCount": 0,
-  "satisfiesPzi": false,
-  "serverCaMode": 0,
   "shardCount": 1,
-  "sizeGb": 2,
+  "sizeGb": 1,
   "state": 2,
   "transitEncryptionMode": 1,
   "uid": "111111111111111111111",
@@ -418,12 +358,10 @@ X-Frame-Options: SAMEORIGIN
 X-Xss-Protection: 0
 
 {
-  "done": false,
   "metadata": {
     "@type": "type.googleapis.com/google.cloud.redis.cluster.v1.OperationMetadata",
     "apiVersion": "v1",
     "createTime": "2024-04-01T12:34:56.123456Z",
-    "requestedCancellation": false,
     "target": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
     "verb": "update"
   },
@@ -454,7 +392,6 @@ X-Xss-Protection: 0
     "apiVersion": "v1",
     "createTime": "2024-04-01T12:34:56.123456Z",
     "endTime": "2024-04-01T12:34:56.123456Z",
-    "requestedCancellation": false,
     "target": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
     "verb": "update"
   },
@@ -462,57 +399,39 @@ X-Xss-Protection: 0
   "response": {
     "@type": "type.googleapis.com/google.cloud.redis.cluster.v1.Cluster",
     "authorizationMode": "AUTH_MODE_DISABLED",
-    "automatedBackupConfig": {
-      "automatedBackupMode": "DISABLED"
-    },
     "createTime": "2024-04-01T12:34:56.123456Z",
     "crossClusterReplicationConfig": {
       "clusterRole": "PRIMARY",
       "membership": {
         "primaryCluster": {
           "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
-          "uid": "995736d6-1807-488b-a49d-75183095fb0c"
+          "uid": "cluster-rediscluster-us-central1-b-${uniqueId}"
         },
         "secondaryClusters": [
           {
             "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
-            "uid": "9ee99fdd-f231-42c8-84ae-4542c5a51db2"
+            "uid": "cluster-rediscluster-us-central1-a-${uniqueId}"
           }
         ]
       },
       "secondaryClusters": [
         {
           "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
-          "uid": "9ee99fdd-f231-42c8-84ae-4542c5a51db2"
+          "uid": "cluster-rediscluster-us-central1-a-${uniqueId}"
         }
       ],
-      "updateTime": "2026-03-13T22:44:38.034520671Z"
+      "updateTime": "2026-03-13T23:48:05.578347247Z"
     },
     "deletionProtectionEnabled": false,
-    "effectiveMaintenanceVersion": "REDISCLUSTER_20260225_00_00",
-    "encryptionInfo": {
-      "encryptionType": "GOOGLE_DEFAULT_ENCRYPTION"
-    },
     "name": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
     "nodeType": "REDIS_SHARED_CORE_NANO",
     "persistenceConfig": {
       "mode": "DISABLED"
     },
     "preciseSizeGb": 1.4,
-    "pscServiceAttachments": [
-      {
-        "connectionType": "CONNECTION_TYPE_DISCOVERY",
-        "serviceAttachment": "projects/1025880878716/regions/us-central1/serviceAttachments/gcp-memorystore-auto-h200c6a62a7b547d-psc-sa"
-      },
-      {
-        "serviceAttachment": "projects/1025880878716/regions/us-central1/serviceAttachments/gcp-memorystore-auto-h200c6a62a7b547d-psc-sa-2"
-      }
-    ],
     "replicaCount": 0,
-    "satisfiesPzi": false,
-    "serverCaMode": "SERVER_CA_MODE_UNSPECIFIED",
     "shardCount": 1,
-    "sizeGb": 2,
+    "sizeGb": 1,
     "state": "ACTIVE",
     "transitEncryptionMode": "TRANSIT_ENCRYPTION_MODE_DISABLED",
     "uid": "111111111111111111111",
@@ -542,57 +461,39 @@ X-Xss-Protection: 0
 
 {
   "authorizationMode": 2,
-  "automatedBackupConfig": {
-    "automatedBackupMode": 1
-  },
   "createTime": "2024-04-01T12:34:56.123456Z",
   "crossClusterReplicationConfig": {
     "clusterRole": 2,
     "membership": {
       "primaryCluster": {
         "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
-        "uid": "995736d6-1807-488b-a49d-75183095fb0c"
+        "uid": "cluster-rediscluster-us-central1-b-${uniqueId}"
       },
       "secondaryClusters": [
         {
           "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
-          "uid": "9ee99fdd-f231-42c8-84ae-4542c5a51db2"
+          "uid": "cluster-rediscluster-us-central1-a-${uniqueId}"
         }
       ]
     },
     "secondaryClusters": [
       {
         "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
-        "uid": "9ee99fdd-f231-42c8-84ae-4542c5a51db2"
+        "uid": "cluster-rediscluster-us-central1-a-${uniqueId}"
       }
     ],
-    "updateTime": "2026-03-13T22:44:38.034520671Z"
+    "updateTime": "2026-03-13T23:48:05.578347247Z"
   },
   "deletionProtectionEnabled": false,
-  "effectiveMaintenanceVersion": "REDISCLUSTER_20260225_00_00",
-  "encryptionInfo": {
-    "encryptionType": 1
-  },
   "name": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
   "nodeType": 1,
   "persistenceConfig": {
     "mode": 1
   },
   "preciseSizeGb": 1.4,
-  "pscServiceAttachments": [
-    {
-      "connectionType": 1,
-      "serviceAttachment": "projects/1025880878716/regions/us-central1/serviceAttachments/gcp-memorystore-auto-h200c6a62a7b547d-psc-sa"
-    },
-    {
-      "serviceAttachment": "projects/1025880878716/regions/us-central1/serviceAttachments/gcp-memorystore-auto-h200c6a62a7b547d-psc-sa-2"
-    }
-  ],
   "replicaCount": 0,
-  "satisfiesPzi": false,
-  "serverCaMode": 0,
   "shardCount": 1,
-  "sizeGb": 2,
+  "sizeGb": 1,
   "state": 2,
   "transitEncryptionMode": 1,
   "uid": "111111111111111111111",
@@ -621,39 +522,18 @@ X-Xss-Protection: 0
 
 {
   "authorizationMode": 2,
-  "automatedBackupConfig": {
-    "automatedBackupMode": 1
-  },
   "createTime": "2024-04-01T12:34:56.123456Z",
   "deletionProtectionEnabled": false,
-  "effectiveMaintenanceVersion": "REDISCLUSTER_20260225_00_00",
-  "encryptionInfo": {
-    "encryptionType": 1
-  },
   "name": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
   "nodeType": 1,
   "persistenceConfig": {
     "mode": 1
   },
   "preciseSizeGb": 1.4,
-  "pscServiceAttachments": [
-    {
-      "connectionType": 1,
-      "serviceAttachment": "projects/983919443561/regions/us-central1/serviceAttachments/gcp-memorystore-auto-f08d2b9c6ba5520b-psc-sa"
-    },
-    {
-      "serviceAttachment": "projects/983919443561/regions/us-central1/serviceAttachments/gcp-memorystore-auto-f08d2b9c6ba5520b-psc-sa-2"
-    }
-  ],
   "replicaCount": 0,
-  "satisfiesPzi": true,
-  "serverCaMode": 0,
   "shardCount": 1,
-  "sizeGb": 2,
-  "state": 3,
-  "stateInfo": {
-    "updateInfo": {}
-  },
+  "sizeGb": 1,
+  "state": 2,
   "transitEncryptionMode": 1,
   "uid": "111111111111111111111",
   "zoneDistributionConfig": {
@@ -680,12 +560,10 @@ X-Frame-Options: SAMEORIGIN
 X-Xss-Protection: 0
 
 {
-  "done": false,
   "metadata": {
     "@type": "type.googleapis.com/google.cloud.redis.cluster.v1.OperationMetadata",
     "apiVersion": "v1",
     "createTime": "2024-04-01T12:34:56.123456Z",
-    "requestedCancellation": false,
     "target": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
     "verb": "delete"
   },
@@ -716,7 +594,6 @@ X-Xss-Protection: 0
     "apiVersion": "v1",
     "createTime": "2024-04-01T12:34:56.123456Z",
     "endTime": "2024-04-01T12:34:56.123456Z",
-    "requestedCancellation": false,
     "target": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
     "verb": "delete"
   },
