@@ -44,12 +44,12 @@ status:
       membership:
         primaryCluster:
           cluster: projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}
-          uid: 995736d6-1807-488b-a49d-75183095fb0c
+          uid: cluster-rediscluster-us-central1-b-${uniqueId}
         secondaryClusters:
         - cluster: projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}
-          uid: 9ee99fdd-f231-42c8-84ae-4542c5a51db2
-      updateTime: "2026-03-13T22:44:38.034520671Z"
+          uid: cluster-rediscluster-us-central1-a-${uniqueId}
+      updateTime: "2024-04-01T12:34:56.123456Z"
     preciseSizeGb: 1.4
-    sizeGb: 2
+    sizeGb: 1
     state: ACTIVE
     uid: 0123456789abcdef

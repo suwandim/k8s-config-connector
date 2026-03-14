@@ -164,6 +164,9 @@ func buildKRMNormalizer(t *testing.T, u *unstructured.Unstructured, project test
 	visitor.replacePaths[".status.observedState.pscConnections[].pscConnectionID"] = "${pscConnectionID}"
 	visitor.replacePaths[".status.observedState.pscConnections[].address"] = "10.11.12.13"
 	visitor.replacePaths[".status.observedState.discoveryEndpoints[].address"] = "10.11.12.13"
+	visitor.replacePaths[".crossClusterReplicationConfig.updateTime"] = "2024-04-01T12:34:56.123456Z"
+	visitor.replacePaths[".response.crossClusterReplicationConfig.updateTime"] = "2024-04-01T12:34:56.123456Z"
+	visitor.replacePaths[".status.observedState.crossClusterReplicationConfig.updateTime"] = "2024-04-01T12:34:56.123456Z"
 
 	// Specific to VertexAI
 	visitor.replacePaths[".status.blobStoragePathPrefix"] = "cloud-ai-platform-00000000-1111-2222-3333-444444444444"

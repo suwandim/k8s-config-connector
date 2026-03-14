@@ -236,7 +236,7 @@ X-Xss-Protection: 0
         "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
         "uid": "cluster-rediscluster-us-central1-a-${uniqueId}"
       },
-      "updateTime": "2026-03-13T23:48:04.562474891Z"
+      "updateTime": "2024-04-01T12:34:56.123456Z"
     },
     "deletionProtectionEnabled": false,
     "name": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
@@ -296,7 +296,7 @@ X-Xss-Protection: 0
       "cluster": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-a-${uniqueId}",
       "uid": "cluster-rediscluster-us-central1-a-${uniqueId}"
     },
-    "updateTime": "2026-03-13T23:48:04.562474891Z"
+    "updateTime": "2024-04-01T12:34:56.123456Z"
   },
   "deletionProtectionEnabled": false,
   "name": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
@@ -420,7 +420,7 @@ X-Xss-Protection: 0
           "uid": "cluster-rediscluster-us-central1-a-${uniqueId}"
         }
       ],
-      "updateTime": "2026-03-13T23:48:05.578347247Z"
+      "updateTime": "2024-04-01T12:34:56.123456Z"
     },
     "deletionProtectionEnabled": false,
     "name": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
@@ -482,7 +482,7 @@ X-Xss-Protection: 0
         "uid": "cluster-rediscluster-us-central1-a-${uniqueId}"
       }
     ],
-    "updateTime": "2026-03-13T23:48:05.578347247Z"
+    "updateTime": "2024-04-01T12:34:56.123456Z"
   },
   "deletionProtectionEnabled": false,
   "name": "projects/${projectId}/locations/us-central1/clusters/rediscluster-us-central1-b-${uniqueId}",
